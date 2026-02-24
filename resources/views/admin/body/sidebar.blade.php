@@ -41,17 +41,31 @@
                             <li>
                                 <a href="#sidebarAuth" data-bs-toggle="collapse">
                                     <i data-feather="users"></i>
-                                    <span> Authentication </span>
+                                    <span> Brand Manage </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarAuth">
                                     <ul class="nav-second-level">
 
                                         <li>
-                                            <a href="auth-login.html" class="tp-link">Log In</a>
+                                            <a href="{{ route('all.brand') }}" class="tp-link">All Brand</a>
                                         </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#WareHouse" data-bs-toggle="collapse">
+                                    <i data-feather="users"></i>
+                                    <span> Warehouse Manage </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="WareHouse">
+                                    <ul class="nav-second-level">
+
                                         <li>
-                                            <a href="auth-register.html" class="tp-link">Register</a>
+                                            <a href="{{ route('all.warehouse') }}" class="tp-link">All Warehouse</a>
                                         </li>
 
                                     </ul>
