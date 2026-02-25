@@ -8,12 +8,12 @@
 
             <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                 <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">Add Warehouse</h4>
+                    <h4 class="fs-18 fw-semibold m-0">Edit Warehouse</h4>
                 </div>
 
                 <div class="text-end">
                     <ol class="breadcrumb m-0 py-0">
-                        <li class="breadcrumb-item active">Add Warehouse</li>
+                        <li class="breadcrumb-item active">Edit Warehouse</li>
                     </ol>
                 </div>
             </div>
@@ -23,17 +23,18 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Add Warehouse</h5>
+                            <h5 class="card-title mb-0">Edit Warehouse</h5>
                         </div><!-- end card header -->
 
                         <div class="card-body">
-                            <form class="row g-3" action="{{ route('store.warehouse') }}" method="POST" />
+                            <form class="row g-3" action="{{ route('update.warehouse') }}" method="POST" />
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $warehouse->id }}">
 
                                 <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">Warehouse name</label>
                                     <input type="text" class="form-control @error('name') is-invalid
-                                    @enderror" name="name">
+                                    @enderror" name="name" value="{{ $warehouse->name }}">
                                     @error('name')
                                     <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -42,7 +43,7 @@
                                 <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">Email</label>
                                     <input type="email" class="form-control @error('email') is-invalid
-                                    @enderror" name="email">
+                                    @enderror" name="email" value="{{ $warehouse->email }}">
                                     @error('email')
                                     <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -51,7 +52,7 @@
                                 <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">Phone</label>
                                     <input type="text" class="form-control @error('phone') is-invalid
-                                    @enderror" name="phone">
+                                    @enderror" name="phone" value="{{ $warehouse->phone }}" >
                                     @error('phone')
                                     <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -60,7 +61,7 @@
                                 <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">City</label>
                                     <input type="text" class="form-control @error('city') is-invalid
-                                    @enderror" name="city">
+                                    @enderror" name="city" value="{{ $warehouse->city }}">
                                     @error('city')
                                     <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
