@@ -49,6 +49,7 @@ class WareHouseController extends Controller
         $warehouse = Warehouse::find($id);
         return view('admin.backend.warehouse.edit_warehouse', compact('warehouse'));
     }
+    //End Method
 
     public function UpdateWarehouse(Request $request)
     {
