@@ -8,12 +8,12 @@
 
             <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                 <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">All Supplier</h4>
+                    <h4 class="fs-18 fw-semibold m-0">All Customer</h4>
                 </div>
 
                 <div class="text-end">
                     <ol class="breadcrumb m-0 py-0">
-                        <a href="{{ route('add.supplier') }}" class="btn btn-secondary">Add Supplier</a>
+                        <a href="{{ route('add.customer') }}" class="btn btn-secondary">Add Customer</a>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h5 class="card-title mb-0">All Supplier</h5>
+                            <h5 class="card-title mb-0">All Customer</h5>
                         </div><!-- end card header -->
 
                         <div class="card-body">
@@ -32,7 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>Sl No</th>
-                                        <th>Supplier Name</th>
+                                        <th>Customer Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($supplier as $key => $item)
+                                    @foreach ($customer as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->name }}</td>
@@ -48,9 +48,9 @@
                                             <td>{{ $item->phone }}</td>
                                             <td>{{ Str::limit($item->address, 50, '...') }}</td>
                                             <td>
-                                                <a href="{{ route('edit.supplier', $item->id) }}"
+                                                <a href="{{ route('edit.customer', $item->id) }}"
                                                     class="btn btn-success btn-sm">Edit</a>
-                                                <a href="{{ route('delete.supplier', $item->id) }}"
+                                                <a href="{{ route('delete.customer', $item->id) }}"
                                                     class="btn btn-danger btn-sm" id="delete">Delete</a>
                                             </td>
                                         </tr>

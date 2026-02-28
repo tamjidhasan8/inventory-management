@@ -8,12 +8,12 @@
 
             <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                 <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">Add Supplier</h4>
+                    <h4 class="fs-18 fw-semibold m-0">Edit Customer</h4>
                 </div>
 
                 <div class="text-end">
                     <ol class="breadcrumb m-0 py-0">
-                        <li class="breadcrumb-item active">Add Supplier</li>
+                        <li class="breadcrumb-item active">Edit Customer</li>
                     </ol>
                 </div>
             </div>
@@ -23,35 +23,36 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Add Supplier</h5>
+                            <h5 class="card-title mb-0">Edit Customer</h5>
                         </div><!-- end card header -->
 
                         <div class="card-body">
-                            <form id="myForm" class="row g-3" action="{{ route('store.supplier') }}" method="POST" />
+                            <form id="myForm" class="row g-3" action="{{ route('update.customer') }}" method="POST" />
                             @csrf
+                            <input type="hidden" name="id" value="{{ $customer->id }}">
 
                             <div class="form-group col-md-4">
-                                <label for="validationDefault01" class="form-label">Supplier name</label>
-                                <input type="text" class="form-control" name="name">
+                                <label for="validationDefault01" class="form-label">Customer name</label>
+                                <input type="text" class="form-control" name="name" value="{{ $customer->name }}">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="validationDefault01" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" value="{{ $customer->email }}">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="validationDefault01" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phone">
+                                <input type="text" class="form-control" name="phone" value="{{ $customer->phone }}">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="validationDefault01" class="form-label">Address</label>
-                                <textarea name="address" class="form-control"></textarea>
+                                <textarea name="address" class="form-control">{{ $customer->address }}</textarea>
                             </div>
 
                             <div class="col-12">
-                                <button class="btn btn-primary" type="submit">Save Supplier</button>
+                                <button class="btn btn-primary" type="submit">Update Customer</button>
                             </div>
                         </div>
 
@@ -68,7 +69,7 @@
     </div>
     <!-- content -->
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
@@ -88,16 +89,16 @@
                 },
                 messages: {
                     name: {
-                        required: 'Please Enter Supplier Name',
+                        required: 'Please Enter Customer Name',
                     },
                     email: {
-                        required: 'Please Enter Supplier Email',
+                        required: 'Please Enter Customer Email',
                     },
                     phone: {
-                        required: 'Please Enter Supplier Phone Number',
+                        required: 'Please Enter Customer Phone Number',
                     },
                     address: {
-                        required: 'Please Enter Supplier Address',
+                        required: 'Please Enter Customer Address',
                     },
 
 
@@ -115,5 +116,5 @@
                 },
             });
         });
-    </script>
+    </script> --}}
 @endsection
