@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\Controller;
 use App\Models\Customer;
 
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class CustomerController extends Controller
     }
     //End Method
 
-        public function StoreCustomer(Request $request)
+    public function StoreCustomer(Request $request)
     {
         Customer::create([
             'name' => $request->name,
@@ -44,7 +46,7 @@ class CustomerController extends Controller
     }
     //End Method
 
-        public function UpdateCustomer(Request $request)
+    public function UpdateCustomer(Request $request)
     {
         $customer_id = $request->id;
         Customer::find($customer_id)->update([
@@ -62,7 +64,7 @@ class CustomerController extends Controller
     }
     //End Method
 
-        public function DeleteCustomer($id)
+    public function DeleteCustomer($id)
     {
         Customer::find($id)->delete();
 
