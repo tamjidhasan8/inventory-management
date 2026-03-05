@@ -17,8 +17,9 @@
         </div>
          <div class="card">
             <div class="card-body">
-<form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('update.product') }}" method="POST" enctype="multipart/form-data">
    @csrf
+   <input type="hidden" name="id" value="{{ $editData->id }}">
    <div class="row">
       <div class="col-xl-8">
          <div class="card">
@@ -78,12 +79,24 @@
       </div>
       <div class="col-xl-4">
          <div class="card">
-            <label class="form-label">Multiple Image: <span class="text-danger">*</span></label>
+            <label class="form-label">Product Images: <span class="text-danger">*</span></label>
             <div class="mb-3">
                <input name="image[]" accept=".png, .jpg, .jpeg" multiple="" type="file" id="multiImg" class="upload-input-file form-control">
             </div>
 
-            <div class="row" id="preview_img"></div>
+            <div class="row" id="preview_img">
+                @if (isset($editData) && $editData->images->count() > 0)
+                    @foreach ($editData->images as $img)
+                        <div class="col-md-3 mb-2">
+                            <img src="{{ asset($img->image) }}" alt="Product Image" class="img-thumbnail">
+                            <div class="form-check mt-1">
+                                <input type="checkbox" name="remove_image[]" class="form-check-input" value="{{ $img->id }}" id="remove_image_{{ $img->id }}">
+                                <label for="remove_image_{{ $img->id }}" class="form-check-label">Remove</label>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
          </div>
          <div>
             <div class="col-md-12 mb-3">
@@ -129,7 +142,7 @@
                      <option value="Received" {{ (isset($editData->status) && $editData->status == 'Received') ? 'selected' : '' }}>Received</option>
 
                      <option value="Pending" {{ (isset($editData->status) && $editData->status == 'Pending') ? 'selected' : '' }}>Pending</option>
-                     
+
                   </select>
                </div>
             </div>
