@@ -18,4 +18,12 @@ class Product extends Model
     public function brand(){
         return $this->belongsTo(Brand::class, 'brand_id','id');
     }
+
+    public function supplier(){
+        return $this->belongsTo(Supplier::class, 'supplier_id','id');
+    }
+
+    public function category(){
+        return $this->belongsTo(ProductCategory::class, 'category_id','id');
+    }
 }

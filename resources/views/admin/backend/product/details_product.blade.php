@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 
 @section('admin')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <div class="content">
 
         <!-- Start Content-->
@@ -9,22 +10,98 @@
                 <div class="flex-grow-1">
                     <h4 class="fs-18 fw-semibold m-0">Product Details</h4>
                 </div>
+
+                <div class="text-end">
+                    <ol class="breadcrumb m-0 py-0">
+                        <a href="{{ route('all.product') }}" class="btn btn-dark">Back</a>
+                    </ol>
+                </div>
             </div>
             <hr>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-5">
+                        {{-- Product Image --}}
+                        <div class="col-md-4">
                             <h5 class="mb-3">Product Images</h5>
                             <div class="d-flex flex-wrap">
                                 @forelse ($product->images as $image)
-                                <img src="{{ asset($image->image) }}" alt="Product Image" class="me-2 mb-2" width="100" height="75" style="object-fit: cover; border: 1px solid #ddd; border-radius: 5px;">
+                                    <img src="{{ asset($image->image) }}" alt="Product Image" class="me-2 mb-2"
+                                        width="100" height="75"
+                                        style="object-fit: cover; border: 1px solid #ddd; border-radius: 5px;">
                                 @empty
-                                <p class="text-danger">No Image Available for This Product</p>
+                                    <p class="text-danger">No Image Available for This Product</p>
                                 @endforelse
                             </div>
                         </div>
-                        
+                        {{-- Product Details Data --}}
+                        <div class="col-md-8">
+                            <h5 class="mb-3">Product Information</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-tag text-primary me-2"></i><strong>Name</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->name }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-barcode text-info me-2"></i><strong>Code</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->code }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-warehouse text-warning me-2"></i><strong>Warehouse</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->warehouse->name }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-list text-success me-2"></i><strong>Category</strong></span>
+                                    <span><i
+                                            class="fa fa-angle-right mx-2"></i>{{ $product->category->category_name }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-copyright text-secondary me-2"></i><strong>Brand</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->brand->name }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-truck text-danger me-2"></i><strong>Supplier</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->supplier->name }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-dollar-sign text-success me-2"></i><strong>Price</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->price }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-exclamation-triangle text-warning me-2"></i><strong>Stock
+                                            Alert</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->stock_alert }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-box text-primary me-2"></i><strong>Quantity</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->product_qty }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-check-circle text-success me-2"></i><strong>Status</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->status }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-sticky-note text-info me-2"></i><strong>Note</strong></span>
+                                    <span><i class="fa fa-angle-right mx-2"></i>{{ $product->note }}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span><i class="fa fa-calendar text-danger me-2"></i><strong>Created On</strong></span>
+                                    <span><i
+                                            class="fa fa-angle-right mx-2"></i>{{ \Carbon\Carbon::parse($product->created_at)->format('d F Y') }}</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
