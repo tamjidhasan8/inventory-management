@@ -213,6 +213,6 @@
 
 
     <script>
-        var productSearchUrl = "{{ route('purchase.product.search') }}"
+        var productSearchUrl = "{{ route('purchase.product.search') }}";
     </script>
 @endsection
